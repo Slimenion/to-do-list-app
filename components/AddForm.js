@@ -8,7 +8,11 @@ export function AddForm() {
                 placeholder="Введите ваше новое дело..."
                 style={styles.TextInputView}
             />
-            <Button style={styles.ButtonView} title="Добавить" />
+            <Button
+                style={styles.ButtonView}
+                color="#2E8986"
+                title="Добавить"
+            />
         </View>
     );
 }
@@ -21,6 +25,7 @@ const styles = StyleSheet.create({
     },
     ButtonView: {},
     TextInputView: {
+        width: "80%",
         marginRight: 20,
         borderBottomWidth: 1,
         paddingRight: 50,

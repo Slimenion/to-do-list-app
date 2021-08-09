@@ -7,18 +7,35 @@ import ListItem from "./components/ListItem";
 
 export default function App() {
     const [listOfItems, setListOfItems] = useState([
-        { text: "Стать богом", index: "1" },
-        { text: "Снова стать человеком", index: "2" },
-        { text: "Понять что ты уже выше обоих ипстасий", index: "3" },
+        { text: "Стать богом", key: "1" },
+        { text: "Снова стать человеком", key: "2" },
+        {
+            text: "Понять что ты уже выше обоих ипостасий",
+            key: "3",
+        },
     ]);
+
+    const addHendler = (text) => {
+        setListOfItems((list) => {
+            return [{ text: text, key: Date.now().toString() }, ...list];
+        });
+    };
+
+    const deleteHandler = (key) => {
+        setListOfItems((list) => {
+            return list.filter((listOfItems) => listOfItems.key != key);
+        });
+    };
 
     return (
         <View style={styles.MainStyle}>
             <Header />
-            <AddForm />
+            <AddForm addHendler={addHendler} />
             <FlatList
                 data={listOfItems}
-                renderItem={({ item }) => <ListItem el={item} />}
+                renderItem={({ item }) => (
+                    <ListItem el={item} deleteHandler={deleteHandler} />
+                )}
             />
         </View>
     );

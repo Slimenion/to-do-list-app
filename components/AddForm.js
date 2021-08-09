@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, TextInput, StyleSheet, View } from "react-native";
 
-export function AddForm() {
+export function AddForm({ addHendler }) {
+    const [text, setValue] = useState("");
+
+    const onChange = (text) => {
+        setValue(text);
+    };
+
     return (
         <View style={styles.PositionItems}>
             <TextInput
                 placeholder="Введите ваше новое дело..."
                 style={styles.TextInputView}
+                onChangeText={onChange}
             />
             <Button
                 style={styles.ButtonView}
                 color="#2E8986"
                 title="Добавить"
+                onPress={() => addHendler(text)}
             />
         </View>
     );
@@ -19,16 +27,17 @@ export function AddForm() {
 
 const styles = StyleSheet.create({
     PositionItems: {
-        padding: 10,
+        paddingVertical: 10,
         flexDirection: "row",
         justifyContent: "center",
     },
-    ButtonView: {},
+    ButtonView: {
+        width: "30%",
+    },
     TextInputView: {
-        width: "80%",
+        width: "60%",
         marginRight: 20,
         borderBottomWidth: 1,
-        paddingRight: 50,
         borderBottomColor: "#2E8986",
     },
 });

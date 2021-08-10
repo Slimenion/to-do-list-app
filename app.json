@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "to-do-list-2",
-    "slug": "to-do-list-2",
+    "name": "to-do-list-app",
+    "slug": "to-do-list-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Slimenion/to-do-list-app"
   }
 }

@@ -8,22 +8,8 @@ import ListItem from "./components/ListItem";
 export default function App() {
     const [listOfItems, setListOfItems] = useState([
         {
-            text: "Стать богом",
+            text: "Тест запись",
             key: "1",
-            checkStatus: require("./assets/unCheck.png"),
-            textCross: styles.textNoCross,
-            trashStatus: require("./assets/TrashNoGlow.png"),
-        },
-        {
-            text: "Снова стать человеком",
-            key: "2",
-            checkStatus: require("./assets/unCheck.png"),
-            textCross: styles.textNoCross,
-            trashStatus: require("./assets/TrashNoGlow.png"),
-        },
-        {
-            text: "Понять что ты уже выше обоих ипостасий",
-            key: "3",
             checkStatus: require("./assets/unCheck.png"),
             textCross: styles.textNoCross,
             trashStatus: require("./assets/TrashNoGlow.png"),

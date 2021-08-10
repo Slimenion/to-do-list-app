@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
     StyleSheet,
@@ -10,28 +10,24 @@ import {
     TouchableWithoutFeedback,
 } from "react-native";
 
-export default function ListItem({ el, deleteHandler }) {
-    var CheckImage = require("../assets/unCheck.png");
-
-    const Check = () => {
-        CheckImage = require("../assets/check.png");
-    };
-
+export default function ListItem({ el, deleteHandler, checkImage }) {
     return (
         <View style={styles.todoStyle}>
             <View style={styles.textAndImage}>
-                <TouchableWithoutFeedback onPress={Check}>
-                    <Image style={styles.imageStyle} source={CheckImage} />
+                <TouchableWithoutFeedback
+                    onPress={() => checkImage(el.key, el.text)}
+                >
+                    <Image style={styles.imageStyle} source={el.checkStatus} />
                 </TouchableWithoutFeedback>
-                <Text numberOfLines={1} style={styles.textStyle}>
+                <Text
+                    numberOfLines={1}
+                    style={[el.textCross, styles.textStyle]}
+                >
                     {el.text}
                 </Text>
             </View>
             <TouchableWithoutFeedback onPress={() => deleteHandler(el.key)}>
-                <Image
-                    style={styles.trashStyle}
-                    source={require("../assets/TrashNoGlow.png")}
-                />
+                <Image style={styles.trashStyle} source={el.trashStatus} />
             </TouchableWithoutFeedback>
         </View>
     );

@@ -7,17 +7,62 @@ import ListItem from "./components/ListItem";
 
 export default function App() {
     const [listOfItems, setListOfItems] = useState([
-        { text: "Стать богом", key: "1" },
-        { text: "Снова стать человеком", key: "2" },
+        {
+            text: "Стать богом",
+            key: "1",
+            checkStatus: require("./assets/unCheck.png"),
+            textCross: styles.textNoCross,
+            trashStatus: require("./assets/TrashNoGlow.png"),
+        },
+        {
+            text: "Снова стать человеком",
+            key: "2",
+            checkStatus: require("./assets/unCheck.png"),
+            textCross: styles.textNoCross,
+            trashStatus: require("./assets/TrashNoGlow.png"),
+        },
         {
             text: "Понять что ты уже выше обоих ипостасий",
             key: "3",
+            checkStatus: require("./assets/unCheck.png"),
+            textCross: styles.textNoCross,
+            trashStatus: require("./assets/TrashNoGlow.png"),
         },
     ]);
 
     const addHendler = (text) => {
         setListOfItems((list) => {
-            return [{ text: text, key: Date.now().toString() }, ...list];
+            if (text == "") {
+                return [...list];
+            } else {
+                return [
+                    {
+                        text: text,
+                        key: Date.now().toString(),
+                        checkStatus: require("./assets/unCheck.png"),
+                        textCross: styles.textNoCross,
+                        trashStatus: require("./assets/TrashNoGlow.png"),
+                    },
+                    ...list,
+                ];
+            }
+        });
+    };
+
+    const checkImage = (key, text) => {
+        setListOfItems((list) => {
+            var newList = list.filter((listOfItems) => listOfItems.key != key);
+
+            return [
+                ...newList,
+                {
+                    key: key,
+                    text: text,
+                    checkStatus: require("./assets/check.png"),
+                    textCross: styles.textCross,
+                    trashStatus: require("./assets/TrashGlow.png"),
+                },
+            ];
         });
     };
 
@@ -34,7 +79,11 @@ export default function App() {
             <FlatList
                 data={listOfItems}
                 renderItem={({ item }) => (
-                    <ListItem el={item} deleteHandler={deleteHandler} />
+                    <ListItem
+                        el={item}
+                        deleteHandler={deleteHandler}
+                        checkImage={checkImage}
+                    />
                 )}
             />
         </View>
@@ -42,6 +91,12 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+    textCross: {
+        textDecorationLine: "line-through",
+    },
+    textNoCross: {
+        textDecorationLine: "none",
+    },
     MainStyle: {
         height: "100%",
         backgroundColor: "#D4F2EF",

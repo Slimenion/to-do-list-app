@@ -4,8 +4,9 @@ import { Button, TextInput, StyleSheet, View } from "react-native";
 export function AddForm({ addHendler }) {
     const [text, setValue] = useState("");
 
-    const onChange = (text) => {
-        setValue(text);
+    const pressHandelr = (text) => {
+        addHendler(text);
+        setValue("");
     };
 
     return (
@@ -13,13 +14,14 @@ export function AddForm({ addHendler }) {
             <TextInput
                 placeholder="Введите ваше новое дело..."
                 style={styles.TextInputView}
-                onChangeText={onChange}
+                onChangeText={setValue}
+                value={text}
             />
             <Button
                 style={styles.ButtonView}
                 color="#2E8986"
                 title="Добавить"
-                onPress={() => addHendler(text)}
+                onPress={() => pressHandelr(text)}
             />
         </View>
     );

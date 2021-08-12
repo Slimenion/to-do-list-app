@@ -6,19 +6,17 @@ import SafeViewAndroid from "../styles/SafeViewAndroid";
 
 export function Header() {
     return (
-        <SafeAreaView
-            style={[SafeViewAndroid.AndroidSafeArea, styles.headerStyle]}
-        >
+        <View style={styles.headerStyle}>
             <Text style={styles.textheaderStyle}>
                 Планы ближайшего будущего
             </Text>
-        </SafeAreaView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     headerStyle: {
-        paddingTop: 50,
+        paddingTop: 10,
         backgroundColor: "#2E8986",
         alignItems: "center",
         width: "100%",

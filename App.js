@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, Text, FlatList, StatusBar } from "react-native";
 import { AddForm } from "./components/AddForm";
 
 import { Header } from "./components/Header";
 import ListItem from "./components/ListItem";
 
 export default function App() {
-    const [listOfItems, setListOfItems] = useState([
-        {
-            text: "Тест запись",
-            key: "1",
-            checkStatus: require("./assets/unCheck.png"),
-            textCross: styles.textNoCross,
-            trashStatus: require("./assets/TrashNoGlow.png"),
-        },
-    ]);
+    const [listOfItems, setListOfItems] = useState([]);
 
     const addHendler = (text) => {
         setListOfItems((list) => {
@@ -60,8 +52,8 @@ export default function App() {
 
     return (
         <View style={styles.MainStyle}>
+            <StatusBar color="#FFF" backgroundColor="#2E8986" />
             <Header />
-            <AddForm addHendler={addHendler} />
             <FlatList
                 data={listOfItems}
                 renderItem={({ item }) => (
@@ -72,6 +64,7 @@ export default function App() {
                     />
                 )}
             />
+            <AddForm addHendler={addHendler} />
         </View>
     );
 }

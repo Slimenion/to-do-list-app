@@ -1,2 +1,3 @@
 # to-do-list-app
-Приложение список дел на React native
+
+##### React native to-do list app.
